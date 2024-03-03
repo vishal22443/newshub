@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text-to-Speech Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        textarea {
+            width: 80%;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Text-to-Speech Converter</h1>
+    
+    <label for="textArea">Enter text:</label>
+    <textarea id="textArea" placeholder="Type your text here..."></textarea>
+    
+    <button onclick="convertToSpeech()">Convert to Speech</button>
+
+    <script>
+        function convertToSpeech() {
+            var text = document.getElementById('textArea').value;
+
+            // Check if the browser supports SpeechSynthesis
+            if ('speechSynthesis' in window) {
+                var synth = window.speechSynthesis;
+                var utterance = new SpeechSynthesisUtterance(text);
+                synth.speak(utterance);
+            } else {
+                alert("Sorry, your browser doesn't support Text-to-Speech.");
+            }
+        }
+    </script>
+</body>
+</html>
